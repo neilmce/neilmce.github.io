@@ -9,13 +9,12 @@
   OID:<br>
     <input type="text" name="oid"><br>
     <input type="text" id="add" name="result" value="">
-    <input type="submit" value="Destructure">
+    <input type="submit" value="Destructure" onClick="calc()">
   </form>
     
     <script type="text/javascript">
-          function sum()
+          function calc()
           {
-
              var num1 = document.oidform.oid.value;
              var num2 = document.oidform.oid.value + "hi";
              document.getElementById('add').value = num2;
