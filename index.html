@@ -22,17 +22,21 @@
   function destructure(oid) {
       if (oid && oid.length && oid.length == 24) {
         document.getElementById("timestamp").innerHTML= getTimestamp(oid.substring(0, 8));
-        document.getElementById("machine").innerHTML=oid.substring(8, 14);
-        document.getElementById("process").innerHTML=oid.substring(14, 18);
-        document.getElementById("counter").innerHTML=oid.substring(18, 24);
+        document.getElementById("machine").innerHTML= toInt(oid.substring(8, 14));
+        document.getElementById("process").innerHTML= toInt(oid.substring(14, 18));
+        document.getElementById("counter").innerHTML= toInt(oid.substring(18, 24));
       }
   }
       
   function getTimestamp(timeHex) {
       var d = new Date();
-      var seconds = parseInt("0x" + timeHex);
+      var seconds = toInt(timeHex);
       d.setTime(seconds * 1000);
       return d;
+  }
+      
+  function toInt(hexString) {
+      return parseInt("0x" + hexString);
   }
   </script>
 </body>
