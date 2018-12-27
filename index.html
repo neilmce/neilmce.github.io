@@ -5,16 +5,18 @@
     <title>Hello World</title>
 </head>
 <body>
-    function temperatureConverter(valNum) {
-      valNum = parseFloat(valNum);
-      document.getElementById("outputCelsius").innerHTML = (valNum-32) / 1.8;
-    }
-    <p>
-        <label>Fahrenheit</label>
-        <input id="inputFahrenheit" type="number" placeholder="Fahrenheit"
-               oninput="temperatureConverter(this.value)"
-               onchange="temperatureConverter(this.value)">
-    </p>
-    <p>Celsius: <span id="outputCelsius"></span></p>
+<p>Type a value in the Feet field to convert the value to Meters:</p>
+
+<p>
+  <label>Feet</label>
+  <input id="inputFeet" type="number" placeholder="Feet" oninput="LengthConverter(this.value)" onchange="LengthConverter(this.value)">
+</p>
+<p>Meters: <span id="outputMeters"></span></p>
+
+<script>
+function LengthConverter(valNum) {
+  document.getElementById("outputMeters").innerHTML=valNum/3.2808;
+}
+</script>
 </body>
 </html>
