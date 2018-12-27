@@ -5,20 +5,16 @@
     <title>Hello World</title>
 </head>
 <body>
-  <form name="oidform" action=""  method="get">
-  OID:<br>
-    <input type="text" name="oid"><br>
-    <input type="text" id="add" name="result" value="">
-    <input type="submit" value="Destructure" onClick="calc()">
-  </form>
-    
-    <script type="text/javascript">
-          function calc()
-          {
-             var num1 = document.oidform.oid.value;
-             var num2 = document.oidform.oid.value + "hi";
-             document.getElementById('add').value = num2;
-          }
-        </script>
+    function temperatureConverter(valNum) {
+      valNum = parseFloat(valNum);
+      document.getElementById("outputCelsius").innerHTML = (valNum-32) / 1.8;
+    }
+    <p>
+        <label>Fahrenheit</label>
+        <input id="inputFahrenheit" type="number" placeholder="Fahrenheit"
+               oninput="temperatureConverter(this.value)"
+               onchange="temperatureConverter(this.value)">
+    </p>
+    <p>Celsius: <span id="outputCelsius"></span></p>
 </body>
 </html>
