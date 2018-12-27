@@ -27,7 +27,9 @@
   }
       
   function getTimestamp(timeHex) {
-      return new Date(parseInt("0x" + timeHex));
+      var d = new Date();
+      d.setTime(parseInt("0x" + timeHex));
+      return d;
   }
   </script>
 </body>
