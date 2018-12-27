@@ -14,21 +14,23 @@
            onchange="destructure(this.value)">
   </p>
   <p>Timestamp: <span id="timestamp"></span></p>
-  <p>Random: <span id="random"></span></p>
+  <p>Machine ID: <span id="machine"></span></p>
+  <p>Process ID: <span id="process"></span></p>
   <p>Counter: <span id="counter"></span></p>
 
   <script>
   function destructure(oid) {
       if (oid && oid.length && oid.length == 24) {
         document.getElementById("timestamp").innerHTML= getTimestamp(oid.substring(0, 8));
-        document.getElementById("random").innerHTML=oid.substring(8, 18);
+        document.getElementById("machine").innerHTML=oid.substring(8, 14);
+        document.getElementById("process").innerHTML=oid.substring(14, 18);
         document.getElementById("counter").innerHTML=oid.substring(18, 24);
       }
   }
       
   function getTimestamp(timeHex) {
       var d = new Date();
-      d.setTime(parseInt("0x" + timeHex));
+      d.setTime(parseInt("0x" + timeHex / 1000));
       return d;
   }
   </script>
