@@ -10,8 +10,8 @@
     <input id="inputFeet"
            type="text" placeholder="OID"
            pattern="[a-fA-F0-9]{24}"
-           oninput="destructure(this.value)"
-           onchange="destructure(this.value)">
+           oninput="display(this.value)"
+           onchange="display(this.value)">
   </p>
   <p>Timestamp: <span id="timestamp"></span></p>
   <p>Machine ID: <span id="machine"></span></p>
@@ -19,24 +19,34 @@
   <p>Counter: <span id="counter"></span></p>
 
   <script>
-  function destructure(oid) {
+  function display(oid) {
+      var data = {seconds: "",
+                  machineId: "",
+                  processId: "",
+                  counter: ""};
       if (oid && oid.length && oid.length == 24) {
-        document.getElementById("timestamp").innerHTML= getTimestamp(oid.substring(0, 8));
-        document.getElementById("machine").innerHTML= toInt(oid.substring(8, 14));
-        document.getElementById("process").innerHTML= toInt(oid.substring(14, 18));
-        document.getElementById("counter").innerHTML= toInt(oid.substring(18, 24));
+        data = destructure(oid);
       }
+          
+      document.getElementById("timestamp").innerHTML= toDate(data.seconds);
+      document.getElementById("machine").innerHTML= data.machineId;
+      document.getElementById("process").innerHTML= data.processId;
+      document.getElementById("counter").innerHTML= data.counter;
+  }
+  
+  function destructure(oid) {
+    return {
+        seconds: parseInt(oid.slice(0, 8), 16),
+        machineId: parseInt(oid.slice(8, 14), 16),
+        processId: parseInt(oid.slice(14, 18), 16),
+        counter: parseInt(oid.slice(18, 24), 16)
+    };
   }
       
-  function getTimestamp(timeHex) {
+  function toDate(seconds) {
       var d = new Date();
-      var seconds = toInt(timeHex);
       d.setTime(seconds * 1000);
       return d;
-  }
-      
-  function toInt(hexString) {
-      return parseInt("0x" + hexString);
   }
   </script>
 </body>
