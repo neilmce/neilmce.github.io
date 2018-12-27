@@ -13,11 +13,17 @@
            oninput="destructure(this.value)"
            onchange="destructure(this.value)">
   </p>
-  <p>Foo: <span id="output"></span></p>
+  <p>Timestamp: <span id="timestamp"></span></p>
+  <p>Random: <span id="random"></span></p>
+  <p>Counter: <span id="counter"></span></p>
 
   <script>
   function destructure(oid) {
-    document.getElementById("output").innerHTML=oid + "hello";
+      if (oid && oid.length && oid.length == 24) {
+        document.getElementById("timestamp").innerHTML=oid.substring(0, 8);
+        document.getElementById("random").innerHTML=oid.substring(8, 18);
+        document.getElementById("counter").innerHTML=oid.substring(18, 24;
+      }
   }
   </script>
 </body>
