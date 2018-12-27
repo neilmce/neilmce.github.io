@@ -5,18 +5,20 @@
     <title>Hello World</title>
 </head>
 <body>
-<p>Type a value in the Feet field to convert the value to Meters:</p>
+  <p>
+  <label>Mongo OID</label>
+    <input id="inputFeet"
+           type="text" placeholder="OID"
+           pattern="[a-fA-F0-9]{24}"
+           oninput="destructure(this.value)"
+           onchange="destructure(this.value)">
+  </p>
+  <p>Foo: <span id="output"></span></p>
 
-<p>
-  <label>Feet</label>
-  <input id="inputFeet" type="number" placeholder="Feet" oninput="LengthConverter(this.value)" onchange="LengthConverter(this.value)">
-</p>
-<p>Meters: <span id="outputMeters"></span></p>
-
-<script>
-function LengthConverter(valNum) {
-  document.getElementById("outputMeters").innerHTML=valNum/3.2808;
-}
-</script>
+  <script>
+  function destructure(oid) {
+    document.getElementById("output").innerHTML=oid + "hello";
+  }
+  </script>
 </body>
 </html>
