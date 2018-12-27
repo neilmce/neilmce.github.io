@@ -30,7 +30,8 @@
       
   function getTimestamp(timeHex) {
       var d = new Date();
-      d.setTime(parseInt("0x" + timeHex / 1000));
+      var seconds = parseInt("0x" + timeHex);
+      d.setTime(seconds * 1000);
       return d;
   }
   </script>
